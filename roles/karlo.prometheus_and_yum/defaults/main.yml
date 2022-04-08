@@ -1,0 +1,9 @@
+---
+# defaults file for karlo.prometheus_and_yum
+ 
+prom_packages: 
+  - prometheus
+  #- node_exporter
+  #- pushgateway
+  #- blackbox_exporter
+  #- alertmanager

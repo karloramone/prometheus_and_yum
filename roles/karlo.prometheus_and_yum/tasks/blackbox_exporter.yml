@@ -1,0 +1,4 @@
+- name: Download blackbox_exporter
+  get_url:
+    url: "{{ wget.blackbox_exporter }}"
+    dest: "{{ wget_dest }}"

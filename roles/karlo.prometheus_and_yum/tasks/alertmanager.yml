@@ -1,0 +1,4 @@
+- name: Download alertmanager
+  get_url:
+    url: "{{ wget.alertmanager }}"
+    dest: "{{ wget_dest }}"

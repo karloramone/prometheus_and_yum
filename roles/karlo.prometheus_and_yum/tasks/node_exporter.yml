@@ -1,0 +1,4 @@
+- name: Download node_exporter
+  get_url:
+    url: "{{ wget.node_exporter }}"
+    dest: "{{ wget_dest }}"

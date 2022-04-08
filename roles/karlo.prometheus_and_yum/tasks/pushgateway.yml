@@ -1,0 +1,4 @@
+- name: Download pushgateway
+  get_url:
+    url: "{{ wget.pushgateway }}"
+    dest: "{{ wget_dest }}"

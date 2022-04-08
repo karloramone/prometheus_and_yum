@@ -1,0 +1,26 @@
+---
+# tasks file for karlo.prometheus_and_yum
+- name: Install prometheus
+  include_tasks: prometheus_install.yml
+  when: item == "prometheus"
+  loop: "{{ prom_packages }}"
+
+- name: Install node_exporter
+  include_tasks: node_exporter.yml
+  when: item == "node_exporter"
+  loop: "{{ prom_packages }}"
+
+- name: Install pushgateway
+  include_tasks: pushgateway.yml
+  when: item == "pushgateway"
+  loop: "{{ prom_packages }}"
+
+- name: Install blackbox_exporter
+  include_tasks: blackbox_exporter.yml
+  when: item == "blackbox_exporter"
+  loop: "{{ prom_packages }}"
+
+- name: Install alertmanager
+  include_tasks: alertmanager.yml
+  when: item == "alertmanager"
+  loop: "{{ prom_packages }}"

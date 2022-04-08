@@ -1,0 +1,4 @@
+- name: Download prometheus
+  get_url:
+    url: "{{ wget.prometheus }}"
+    dest: "{{ wget_dest }}"

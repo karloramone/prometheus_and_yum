@@ -1,0 +1,7 @@
+---
+
+- name: Use roles 
+  hosts: tlv-a2
+  become: true
+  roles:
+    - karlo.prometheus_and_yum

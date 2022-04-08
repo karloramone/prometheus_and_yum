@@ -1,0 +1,52 @@
+---
+- name: Install package
+  hosts: tlv-a2
+  become: true
+  vars: 
+    packages: 
+      - prometheus
+      - alertmanager
+      - blackbox_exporter
+    wget:
+      prometheus: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
+      node_exporter: https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
+      pushgateway: https://github.com/prometheus/pushgateway/releases/download/v1.4.2/pushgateway-1.4.2.linux-amd64.tar.gz
+      blackbox_exporter: https://github.com/prometheus/blackbox_exporter/releases/download/v0.20.0/blackbox_exporter-0.20.0.linux-amd64.tar.gz
+      alertmanager: https://github.com/prometheus/alertmanager/releases/download/v0.24.0/alertmanager-0.24.0.linux-amd64.tar.gz
+    dest: /usr/local/src
+      
+  tasks:
+    - name: Download prometheus
+      get_url:
+        url: "{{ wget.prometheus }}"
+        dest: "{{ dest }}"
+      loop: "{{ packages }}"
+      when: item == "prometheus"
+
+    - name: Download node_exporter
+      get_url:
+        url: "{{ wget.node_exporter }}"
+        dest: "{{ dest }}"
+      loop: "{{ packages }}"
+      when: item == "node_exporter"
+
+    - name: Download pushgateway
+      get_url:
+        url: "{{ wget.pushgateway }}"
+        dest: "{{ dest }}"
+      loop: "{{ packages }}"
+      when: item == "pushgateway"
+    
+    - name: Download blackbox_exporter
+      get_url:
+        url: "{{ wget.blackbox_exporter }}"
+        dest: "{{ dest }}"
+      loop: "{{ packages }}"
+      when: item == "blackbox_exporter"
+
+    - name: Download alertmanager
+      get_url:
+        url: "{{ wget.alertmanager }}"
+        dest: "{{ dest }}"
+      loop: "{{ packages }}"
+      when: item == "alertmanager"
