@@ -1,4 +1,9 @@
-- name: Download prometheus
-  get_url:
-    url: "{{ wget.prometheus }}"
-    dest: "{{ wget_dest }}"
+#- name: Download prometheus
+#  get_url:
+#    url: "{{ wget.prometheus }}"
+#    dest: "{{ wget_dest }}"
+
+- name: Extract files in /etc/prometheus
+  unarchive:
+    src: "{{ wget.prometheus }}"
+    dest: /etc/prometheus
