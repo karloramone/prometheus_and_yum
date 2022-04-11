@@ -3,6 +3,12 @@
 #    url: "{{ wget.prometheus }}"
 #    dest: "{{ wget_dest }}"
 
+- name: Create /etc/prometheus
+  file:
+    path: /etc/prometheus
+    state: directory
+    mode: '0775'
+
 - name: Extract files in /etc/prometheus
   unarchive:
     src: "{{ wget.prometheus }}"
